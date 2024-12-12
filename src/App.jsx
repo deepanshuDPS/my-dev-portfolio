@@ -13,16 +13,14 @@ const App = () => {
   return (
     <div className="flex justify-center">
       <Router>
-        <div className='flex flex-col w-full sm:w-[90%]'>
+        <div className='flex flex-col w-full'>
           <Header />
-          <div className="p-4">
-            <Router>
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/about" component={About} />
-                <Route path="/contact-us" component={ContactUs} />
-              </Switch>
-            </Router>
+          <div className="py-4">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/contact-us" component={ContactUs} />
+            </Switch>
           </div>
         </div>
       </Router>

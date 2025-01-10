@@ -15,7 +15,7 @@ const App = () => {
       <Router>
         <div className='flex flex-col w-full'>
           <Header />
-          <div className="py-4">
+          <div>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/about" component={About} />

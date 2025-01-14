@@ -7,6 +7,13 @@ const Home = () => {
 
   const testimonials = [
     {
+      'review': 'He’s sincere and genuine ',
+      'name': 'Shirley Denis',
+      'link_to_profile': 'https://www.linkedin.com/in/englishwithshirley/',
+      'helped_in': 'Website Development',
+      'year': 2024
+    },
+    {
       'review': 'Deepanshu is an amazing guy with unlimited amounts of patience and a willingness to help others. There have been countless times when I’ve come to him with the programming problems i’m facing at work, and he always takes out the time and is able to figure those problems in a short amount of time. Great guy to have in your corner.',
       'name': 'Vardaan Grover',
       'link_to_profile': 'https://www.linkedin.com/in/vardaan-grover',
@@ -27,14 +34,7 @@ const Home = () => {
       'link_to_profile': 'https://www.linkedin.com/in/ACoAABJ4WKsB0G5HnJ7B68n7zvnva97fuPusQKQ',
       'helped_in': 'App Development',
       'year': 2018
-    },
-    // {
-    //   'review': 'Jimmy Chairperson is a profesional UI/UX Designer. He raully help my business by providing value to my business',
-    //   'name': 'Aditya',
-    //   'link_to_profile': null,
-    //   'helped_in': 'Mentor',
-    //   'year': 2022
-    // }
+    }
   ]
 
   // add Club Liberty, Shirley
@@ -42,6 +42,10 @@ const Home = () => {
     {
       'link': 'https://play.google.com/store/apps/details?id=com.dps.qr_gallery',
       'img': '/images/apps_7.png'
+    },
+    {
+      'link': 'https://www.englishwithshirley.com',
+      'img': '/images/apps_6.png'
     },
     {
       'link': 'https://www.hubhopper.com',
@@ -170,10 +174,10 @@ const Home = () => {
         transition={{ duration: 1, ease: "easeInOut" }}>
 
         <div className="flex flex-col justify-start basis-3/5 px-4">
-          <div className="text-[56px] font-extrabold">Hi There, I'm Deepanshu</div>
-          <div className="text-xl font-light my-6">Hi, I'm a Frontend Engineer passionate about tech-related tasks and have been refining my skills over the past 8+ years. My expertise lies mainly in Frontend Engineering, including Android app development, Flutter apps, and web development.</div>
+          <div className="text-5xl font-extrabold">Hi There, I'm Deepanshu</div>
+          <div className="text-lg font-light my-6">Hi, I'm a Frontend Engineer passionate about tech-related tasks and have been refining my skills over the past 8+ years. My expertise lies mainly in Frontend Engineering, including Android app development, Flutter apps, and web development.</div>
 
-          <div className="flex flex-row mt-20">
+          <div className="flex flex-row mt-16">
             <Link to="contact-us" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center me-2 ">
               Let's Talk
               <svg class="w-4 h-4 ms-2" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -259,16 +263,16 @@ const Home = () => {
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="text-[48px] font-medium">What do I help?</div>
-        <div className="flex text-xl font-light my-6 w-[60%]">I will help you with frontend development as mentioned, and I understand that a visually appealing design with minimal friction creates a better service.</div>
-        <div className="grid grid-cols-2 mt-20">
+        <div className="text-4xl font-medium">What do I help?</div>
+        <div className="flex text-lg font-light my-4 w-[60%]">I will help you with frontend development as mentioned, and I understand that a visually appealing design with minimal friction creates a better service.</div>
+        <div className="grid grid-cols-2 mt-12">
           {whatIDoDetails.map((item) => {
             return (
               <div className="flex flex-row justify-center items-start m-2 space-x-4 p-6 border-2 border-gray-400 rounded-2xl">
                 <img src={item.icon} />
                 <div>
-                  <div className="text-lg font-medium">{item.title}</div>
-                  <div className="mt-1 text-[16px] font-normal text-[#6B7280]">{item.description}</div>
+                  <div className="text-base font-medium">{item.title}</div>
+                  <div className="mt-1 text-sm font-normal text-[#6B7280]">{item.description}</div>
                 </div>
               </div>
             )
@@ -284,21 +288,21 @@ const Home = () => {
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="text-[48px] font-medium">My work Experience</div>
-        <div className="flex text-xl font-light my-6 w-[60%]">I have worked on 10+ projects, including startups and personal ones. Here are my experiences.</div>
+        <div className="text-4xl font-medium">My work Experience</div>
+        <div className="flex text-lg font-light my-4 w-[60%]">I have worked on 10+ projects, including startups and personal ones. Here are my experiences.</div>
 
         <ol class="relative w-full">
           <li class="flex flex-row ms-4">
             <div className="basis-[35%] pt-4">
-              <h3 class="text-lg font-semibold text-gray-900 ">Personal Projects</h3>
-              <p class="mb-4 text-base font-normal text-gray-500 ">July 2016 - Present</p>
+              <h3 class="text-base font-semibold text-gray-900 ">Personal Projects</h3>
+              <p class="mb-4 text-sm font-normal text-gray-500 ">July 2016 - Present</p>
             </div>
             <div className="basis-[65%] relative border-s border-gray-200 ml-4 px-8 py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
-              <h3 class="text-lg font-semibold text-gray-900 ">Frontend Engineer</h3>
-              <p class="mb-4 text-base font-normal text-gray-500 ">Worked on 5+ android apps includes games, utility apps, website develpment and more.</p>
+              <h3 class="text-base font-semibold text-gray-900 ">Frontend Engineer</h3>
+              <p class="mb-4 text-sm font-normal text-gray-500 ">Worked on 5+ android apps includes games, utility apps, website develpment and more.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -307,15 +311,15 @@ const Home = () => {
           </li>
           <li class="flex flex-row ms-4">
             <div className="basis-[35%] pt-4">
-              <h3 class="text-lg font-semibold text-gray-900 ">Hubhopper</h3>
-              <p class="mb-4 text-base font-normal text-gray-500 ">January 2021 - Present</p>
+              <h3 class="text-base font-semibold text-gray-900 ">Hubhopper</h3>
+              <p class="mb-4 text-sm font-normal text-gray-500 ">January 2021 - Present</p>
             </div>
             <div className="basis-[65%] relative border-s border-gray-200 ml-4 px-8 py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
-              <h3 class="text-lg font-semibold text-gray-900 ">Frontend Engineer</h3>
-              <p class="mb-4 text-base font-normal text-gray-500 ">Working on podcast creation and listening android app and it's website develoment.</p>
+              <h3 class="text-base font-semibold text-gray-900 ">Frontend Engineer</h3>
+              <p class="mb-4 text-sm font-normal text-gray-500 ">Working on podcast creation and listening android app and it's website develoment.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -324,15 +328,15 @@ const Home = () => {
           </li>
           <li class="flex flex-row ms-4">
             <div className="basis-[35%] pt-4">
-              <h3 class="text-lg font-semibold text-gray-900 ">NearGroup Chatbot</h3>
-              <p class="mb-4 text-base font-normal text-gray-500 ">January 2020 - December 2020</p>
+              <h3 class="text-base font-semibold text-gray-900 ">NearGroup Chatbot</h3>
+              <p class="mb-4 text-sm font-normal text-gray-500 ">January 2020 - December 2020</p>
             </div>
             <div className="basis-[65%] relative border-s border-gray-200 ml-4 px-8 py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
-              <h3 class="text-lg font-semibold text-gray-900 ">Android App Developer</h3>
-              <p class="mb-4 text-base font-normal text-gray-500 ">Worked on 2 android app projects, one is dating app and the other is a quiz game app.</p>
+              <h3 class="text-base font-semibold text-gray-900 ">Android App Developer</h3>
+              <p class="mb-4 text-sm font-normal text-gray-500 ">Worked on 2 android app projects, one is dating app and the other is a quiz game app.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700      ">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -341,15 +345,15 @@ const Home = () => {
           </li>
           <li class="flex flex-row ms-4">
             <div className="basis-[35%] pt-4">
-              <h3 class="text-lg font-semibold text-gray-900 ">Code Flow Tech LLP</h3>
-              <p class="mb-4 text-base font-normal text-gray-500 ">July 2018 - September 2019</p>
+              <h3 class="text-base font-semibold text-gray-900 ">Code Flow Tech LLP</h3>
+              <p class="mb-4 text-sm font-normal text-gray-500 ">July 2018 - September 2019</p>
             </div>
             <div className="basis-[65%] relative border-s border-gray-200 ml-4 px-8 py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
-              <h3 class="text-lg font-semibold text-gray-900 ">Android App Developer</h3>
-              <p class="mb-4 text-base font-normal text-gray-500 ">Worked on 2+ android app projects basically a Food Delivery, University Helpdesk app etc.</p>
+              <h3 class="text-base font-semibold text-gray-900 ">Android App Developer</h3>
+              <p class="mb-4 text-sm font-normal text-gray-500 ">Worked on 2+ android app projects basically a Food Delivery, University Helpdesk app etc.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700      ">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -372,8 +376,8 @@ const Home = () => {
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
         <div className="bg-[#FBFBFB] w-full h-full mb-28">
-          <div className="px-0 md:pl-[5%] text-[48px] font-medium mt-10">My Portfolio</div>
-          <div className="px-0 md:pl-[5%] flex text-xl font-light mt-2 w-[60%]">One step away to develop your product with us</div>
+          <div className="px-0 md:pl-[10%] text-4xl font-medium mt-10">My Portfolio</div>
+          <div className="px-0 md:pl-[10%] flex text-lg font-light mt-2 w-[60%]">One step away to develop your product with us</div>
           <div className={" my-6 whitespace-nowrap flex " + (paused ? '' : 'animate-slide')}
           // onMouseEnter={() => setPaused(true)}
           // onMouseLeave={() => setPaused(false)}
@@ -397,8 +401,8 @@ const Home = () => {
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
         <div className="flex flex-col w-[80%] justify-center px-10 py-4 items-center text-center bg-[#312E81] text-white rounded-xl">
-          <div className="text-[48px] font-medium mt-10">Let's Make Something Great Together!</div>
-          <div className="flex text-xl font-light mt-4 mb-16 text-center">I will help you to create your brands and innovate businesses</div>
+          <div className="text-4xl font-medium mt-10">Let's Make Something Great Together!</div>
+          <div className="flex text-lg font-light mt-4 mb-16 text-center">I will help you to create your brands and innovate businesses</div>
           <button type="button" class="text-[#312E81] bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center my-4 ">
             Let's Talk
             <svg class="w-4 h-4 ms-2" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -406,7 +410,7 @@ const Home = () => {
             </svg>
           </button>
         </div>
-        <div className="flex flex-row justify-between mb-32 w-full">
+        <div className="flex flex-row justify-between mb-32 w-full text-sm">
           © 2025 Deepanshu. All rights reserved.
           <div className="flex flex-row space-x-4">
             <div ><a
@@ -436,8 +440,8 @@ const Home = () => {
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="text-[48px] font-medium mt-10">People Talk About Me</div>
-        <div className="flex text-xl font-light mt-4 mb-16 w-[50%] text-center">I got a job that was in accordance with that salary and field of work, the process of submitting an application was quite cosy</div>
+        <div className="text-4xl font-medium mt-10">People Talk About Me</div>
+        <div className="flex text-lg font-light mt-4 mb-16 w-[50%] text-center">I got a job that was in accordance with that salary and field of work, the process of submitting an application was quite cosy</div>
         <div className="flex flex-row w-full relative h-[150px]">
           {currentTestimonialSection != 0 && <button className="absolute left-[22%] z-10 top-[25%] shadow-md rounded-full"
             onClick={() => { handleLeftRight("left") }}>

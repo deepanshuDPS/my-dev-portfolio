@@ -5,16 +5,21 @@ import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 const Header = () => {
 
 
-  const [headerBg,setHeaderBg] = useState('bg-white')
+  const [headerBg, setHeaderBg] = useState('bg-white')
   const location = useLocation()
 
-  useEffect(()=>{
-    if(location.pathname.includes('contact')){
+  useEffect(() => {
+    if (location.pathname.includes('contact') || location.pathname.includes('about')) {
       setHeaderBg('bg-[#FBFBFB]')
-    }else{
+    } else {
       setHeaderBg('bg-white')
     }
-  },[location])
+  }, [location])
+
+  const checkPage = (page) => {
+    console.log(location.pathname)
+    return location.pathname === page ? " text-blue-700 " : " text-gray-900 "
+  }
 
   return (
     <nav class={`${headerBg} pb-4`}>
@@ -30,15 +35,15 @@ const Header = () => {
           </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul class={"text-lg font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-transparent" }>
+          <ul class={"text-lg font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-transparent"}>
             <li>
-              <Link to="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Home</Link>
+              <Link to="/" class={"block py-2 px-3 rounded md:p-0 md:hover:text-blue-700 " + checkPage("/")} >Home</Link>
             </li>
             <li>
-              <Link to="/about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 " >About</Link>
+              <Link to="/about" class={"block py-2 px-3 rounded md:p-0 md:hover:text-blue-700  " + checkPage("/about")}  >About</Link>
             </li>
             <li>
-              <Link to="/contact-us" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 " >Contact</Link>
+              <Link to="/contact-us" class={"block py-2 px-3 rounded md:p-0 md:hover:text-blue-700  " + checkPage("/contact-us")} >Contact</Link>
             </li>
           </ul>
         </div>

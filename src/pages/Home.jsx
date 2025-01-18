@@ -167,37 +167,37 @@ const Home = () => {
 
   const topIntro = (index) => {
     return (
-      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-row justify-start h-screen items-center -mt-[10%]"
+      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col md:flex-row justify-start h-screen items-center"
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
 
-        <div className="flex flex-col justify-start basis-3/5 px-4">
-          <div className="text-5xl font-extrabold">Hi There, I'm Deepanshu</div>
-          <div className="text-lg font-light my-6">Hi, I'm a Frontend Engineer passionate about tech-related tasks and have been refining my skills over the past 8+ years. My expertise lies mainly in Frontend Engineering, including Android app development, Flutter apps, and web development.</div>
+        <div className="flex flex-col justify-start md:basis-3/5 px-4 my-8 md:my-0">
+          <div className="text-2xl md:text-5xl font-extrabold">Dream it, Design it, Develop it</div>
+          <div className="text-sm md:text-lg my-6 text-gray-600">Hi, I'm here to help develop your dreams into reality through websites and mobile apps. If you believe in your dream, we believe in our development. It's not just about what we see; it's about what we dream and develop, so others can experience it.</div>
 
-          <div className="flex flex-row mt-16">
-            <Link to="contact-us" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center me-2 ">
+          <div className="flex flex-row mt-2 md:mt-16">
+            <Link to="contact-us" class="h-fit text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs md:text-sm px-4 md:px-6 py-3 md:py-4 text-center inline-flex items-center me-2 ">
               Let's Talk
-              <svg class="w-4 h-4 ms-2" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="w-3 h-3 md:w-4 md:h-4 ms-2" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 7H6.01M10 7H10.01M14 7H14.01M7 13H3C1.89543 13 1 12.1046 1 11V3C1 1.89543 1.89543 1 3 1H17C18.1046 1 19 1.89543 19 3V11C19 12.1046 18.1046 13 17 13H12L7 18V13Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </Link>
-            <button type="button" class="text-gray-500 bg-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center" onClick={() => {
+            <button type="button" class="h-fit text-gray-500 bg-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium  font-medium rounded-lg text-xs md:text-sm px-4 md:px-6 py-3 md:py-4 text-center inline-flex items-center me-2 " onClick={() => {
               setCurrentSection(3)
             }}>
-              Portfolio
-              <svg class="rtl:rotate-180 w-4 h-4 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              Archive
+              <svg class="rtl:rotate-180 w-3 h-3 md:w-4 md:h-4 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
               </svg>
             </button>
           </div>
 
         </div>
-        <div className="basis-2/5 flex justify-center relative -mt-[20%]">
-          <div className="w-[374px] h-[421px] absolute">
-            <span class="flex flex-row space-x-2 bg-[#FBFBFB] text-xs font-bold text-[#312E81] text-center p-3 leading-none rounded-lg px-2 shadow-sm absolute left-[-15%] top-[30%]">
+        <div className="md:basis-2/5 flex justify-center relative mt-8 md:-mt-[20%]">
+          <div className="w-[187px] h-[210px] md:w-[374px] md:h-[420px] absolute">
+            <span class="flex flex-row items-center justify-center space-x-1 md:space-x-2 bg-[#FBFBFB] text-[10px] md:text-xs font-bold text-[#312E81] text-center p-2 md:p-3 leading-none rounded-lg px-2 shadow-sm absolute left-[-30%] md:left-[-15%] top-[20%] md:top-[30%]">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="6.09531" cy="6.04785" r="6" fill="#FDAD57" fill-opacity="0.35" />
                 <circle cx="6.09531" cy="6.04785" r="4" fill="#FDAD57" fill-opacity="0.65" />
@@ -205,7 +205,7 @@ const Home = () => {
               </svg>
               <div>Web Development</div>
             </span>
-            <span class="flex flex-row space-x-2 bg-[#FBFBFB] text-xs font-bold text-[#312E81] text-center p-3 leading-none rounded-lg px-2 shadow-sm absolute left-[-10%] bottom-[15%]">
+            <span class="flex flex-row space-x-1 md:space-x-2 bg-[#FBFBFB] text-[10px] md:text-xs font-bold text-[#312E81] text-center p-2 md:p-3 leading-none rounded-lg px-2 shadow-sm absolute left-[-10%] md:left-[-10%] bottom-[7.5%] md:bottom-[15%]">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="6.09531" cy="6.04785" r="6" fill="#312E81" fill-opacity="0.35" />
                 <circle cx="6.09531" cy="6.04785" r="4" fill="#312E81" fill-opacity="0.65" />
@@ -213,7 +213,7 @@ const Home = () => {
               </svg>
               <div>App Development</div>
             </span>
-            <span class="flex flex-row space-x-2 bg-[#FBFBFB] text-xs font-bold text-[#312E81] text-center p-3 leading-none rounded-lg px-2 shadow-sm absolute right-[5%] top-[12.5%]">
+            <span class="flex flex-row space-x-1 md:space-x-2 bg-[#FBFBFB] text-[10px] md:text-xs font-bold text-[#312E81] text-center p-2 md:p-3 leading-none rounded-lg px-2 shadow-sm absolute right-[-15%] md:right-[-5%] top-[12.5%]">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="6.09531" cy="6.04785" r="6" fill="#FF5F5F" fill-opacity="0.35" />
                 <circle cx="6.09531" cy="6.04785" r="4" fill="#FF5F5F" fill-opacity="0.65" />
@@ -221,7 +221,7 @@ const Home = () => {
               </svg>
               <div>Technical Research</div>
             </span>
-            <span class="flex flex-row space-x-2 bg-[#FBFBFB] text-xs font-bold text-[#312E81] text-center p-3 leading-none rounded-lg px-2 shadow-sm absolute right-[-5%] bottom-[17.5%]">
+            <span class="flex flex-row space-x-1 md:space-x-2 bg-[#FBFBFB] text-[10px] md:text-xs font-bold text-[#312E81] text-center p-2 md:p-3 leading-none rounded-lg px-2 shadow-sm absolute right-[-10%] md:right-[-5%] bottom-[20%] md:bottom-[17.5%]">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="6.09531" cy="6.04785" r="6" fill="#68CA95" fill-opacity="0.35" />
                 <circle cx="6.09531" cy="6.04785" r="4" fill="#68CA95" fill-opacity="0.65" />
@@ -230,7 +230,7 @@ const Home = () => {
               <div>Mentorship</div>
             </span>
           </div>
-          <div className="absolute -z-10">
+          <div className="absolute -z-10 hidden md:block">
             <svg width="0" height="0">
               <defs>
                 <clipPath id="hexagon" clipPathUnits="userSpaceOnUse">
@@ -238,15 +238,33 @@ const Home = () => {
                 </clipPath>
               </defs>
             </svg>
-
             {/* Applying the Clip Path to the Image */}
             <img
               src="/dp_deepanshu.jpg"
               alt="Hexagonal Crop"
+              className="w-[187px] h-[210px] md:w-[374px] md:h-[420px]"
               style={{
-                width: "374px",
-                height: "421px",
                 clipPath: "url(#hexagon)",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+          <div className="absolute -z-10 block md:hidden -mt-[210px]">
+
+            <svg width="187px" height="210px">
+              <defs>
+                <clipPath id="hexagon-sm" clipPathUnits="userSpaceOnUse">
+                  <path d="M84.7215 2.7874C90.136 -0.338668 96.807 -0.338663 102.222 2.78741L177.934 46.4999C183.348 49.6259 186.684 55.403 186.684 61.6555V149.08C186.684 155.407 183.348 161.184 177.934 164.31L102.222 208.022C96.807 211.147 90.136 211.147 84.7215 208.022L8.00915 164.31C2.59464 161.184 -0.741071 155.407 -0.741071 149.08V61.6555C-0.741071 55.403 2.59464 49.6259 8.00915 46.4999L84.7215 2.7874Z" />
+                </clipPath>
+              </defs>
+            </svg>
+            <img
+              src="/dp_deepanshu.jpg"
+              alt="Hexagonal Crop"
+              style={{
+                width: "187px",
+                height: "210px",
+                clipPath: "url(#hexagon-sm)",
                 objectFit: "cover",
               }}
             />
@@ -256,23 +274,23 @@ const Home = () => {
     )
   }
 
-  const whatDoIHelp = (index) => {
+  const whatCanIDo = (index) => {
     return (
-      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen"
+      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen justify-start md:justify-center"
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="text-4xl font-medium">What do I help?</div>
-        <div className="flex text-lg font-light my-4 w-[60%]">I will help you with frontend development as mentioned, and I understand that a visually appealing design with minimal friction creates a better service.</div>
-        <div className="grid grid-cols-2 mt-12">
+        <div className="text-2xl md:text-4xl font-medium px-4 md:px-0">What do I help?</div>
+        <div className="flex text-base md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I will help you with frontend development as mentioned, and I understand that a visually appealing design with minimal friction creates a better service.</div>
+        <div className="flex flex-col md:grid md:grid-cols-2 mt-2 md:mt-12 mx-2">
           {whatIDoDetails.map((item) => {
             return (
-              <div className="flex flex-row justify-center items-start m-2 space-x-4 p-6 border-2 border-gray-400 rounded-2xl">
+              <div className="flex flex-row justify-center m-2 items-start space-x-3 md:space-x-4 p-3 md:p-6 border-2 border-gray-400 rounded-2xl">
                 <img src={item.icon} />
                 <div>
-                  <div className="text-base font-medium">{item.title}</div>
-                  <div className="mt-1 text-sm font-normal text-[#6B7280]">{item.description}</div>
+                  <div className="text-sm font-medium">{item.title}</div>
+                  <div className="mt-1 text-xs font-normal text-[#6B7280]">{item.description}</div>
                 </div>
               </div>
             )
@@ -283,26 +301,26 @@ const Home = () => {
   }
   const myWorkExperience = (index) => {
     return (
-      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen"
+      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen justify-start md:justify-center md:mt-4"
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="text-4xl font-medium">My work Experience</div>
-        <div className="flex text-lg font-light my-4 w-[60%]">I have worked on 10+ projects, including startups and personal ones. Here are my experiences.</div>
+        <div className="text-2xl md:text-4xl font-medium px-4 md:px-0">My work Experience</div>
+        <div className="flex text-base md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I have worked on 10+ projects, including startups and personal ones. Here are my experiences.</div>
 
         <ol class="relative w-full">
           <li class="flex flex-row ms-4">
-            <div className="basis-[35%] pt-4">
-              <h3 class="text-base font-semibold text-gray-900 ">Personal Projects</h3>
-              <p class="mb-4 text-sm font-normal text-gray-500 ">July 2016 - Present</p>
+            <div className="basis-[25%] md:basis-[35%] pt-2 md:pt-4">
+              <h3 class="text-sm md:text-base font-semibold text-gray-900 ">Personal Projects</h3>
+              <p class="mb-4 text-xs md:text-sm font-normal text-gray-500 ">July 2016 - Present</p>
             </div>
-            <div className="basis-[65%] relative border-s border-gray-200 ml-4 px-8 py-4">
+            <div className="basis-[75%] md:basis-[65%] relative border-s border-gray-200 ml-4 px-6 md:px-8 py-2 md:py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
-              <h3 class="text-base font-semibold text-gray-900 ">Frontend Engineer</h3>
-              <p class="mb-4 text-sm font-normal text-gray-500 ">Worked on 5+ android apps includes games, utility apps, website develpment and more.</p>
+              <h3 class="text-sm md:text-base  font-semibold text-gray-900 ">Frontend Engineer</h3>
+              <p class="mb-4 text-sm md:text-sm  font-normal text-gray-500 ">Worked on 5+ android apps includes games, utility apps, website develpment and more.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -310,16 +328,16 @@ const Home = () => {
             </svg></a> */}
           </li>
           <li class="flex flex-row ms-4">
-            <div className="basis-[35%] pt-4">
-              <h3 class="text-base font-semibold text-gray-900 ">Hubhopper</h3>
+            <div className="basis-[25%] md:basis-[35%] pt-2 md:pt-4">
+              <h3 class="text-sm md:text-base font-semibold text-gray-900 ">Hubhopper</h3>
               <p class="mb-4 text-sm font-normal text-gray-500 ">January 2021 - Present</p>
             </div>
-            <div className="basis-[65%] relative border-s border-gray-200 ml-4 px-8 py-4">
+            <div className="basis-[75%] md:basis-[65%] relative border-s border-gray-200 ml-4 px-6 md:px-8 py-2 md:py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
-              <h3 class="text-base font-semibold text-gray-900 ">Frontend Engineer</h3>
-              <p class="mb-4 text-sm font-normal text-gray-500 ">Working on podcast creation and listening android app and it's website develoment.</p>
+              <h3 class="text-sm md:text-base font-semibold text-gray-900  ">Frontend Engineer</h3>
+              <p class="mb-4 text-sm md:text-sm  font-normal text-gray-500 ">Working on podcast creation and listening android app and it's website develoment.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -327,16 +345,16 @@ const Home = () => {
             </svg></a> */}
           </li>
           <li class="flex flex-row ms-4">
-            <div className="basis-[35%] pt-4">
-              <h3 class="text-base font-semibold text-gray-900 ">NearGroup Chatbot</h3>
+            <div className="basis-[25%] md:basis-[35%] pt-2 md:pt-4">
+              <h3 class="text-sm md:text-base font-semibold text-gray-900  ">NearGroup Chatbot</h3>
               <p class="mb-4 text-sm font-normal text-gray-500 ">January 2020 - December 2020</p>
             </div>
-            <div className="basis-[65%] relative border-s border-gray-200 ml-4 px-8 py-4">
+            <div className="basis-[75%] md:basis-[65%] relative border-s border-gray-200 ml-4 px-6 md:px-8 py-2 md:py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
-              <h3 class="text-base font-semibold text-gray-900 ">Android App Developer</h3>
-              <p class="mb-4 text-sm font-normal text-gray-500 ">Worked on 2 android app projects, one is dating app and the other is a quiz game app.</p>
+              <h3 class="text-sm md:text-base font-semibold text-gray-900  ">Android App Developer</h3>
+              <p class="mb-4 text-sm md:text-sm  font-normal text-gray-500 ">Worked on 2 android app projects, one is dating app and the other is a quiz game app.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700      ">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -344,16 +362,16 @@ const Home = () => {
             </svg></a> */}
           </li>
           <li class="flex flex-row ms-4">
-            <div className="basis-[35%] pt-4">
-              <h3 class="text-base font-semibold text-gray-900 ">Code Flow Tech LLP</h3>
+            <div className="basis-[25%] md:basis-[35%] pt-2 md:pt-4">
+              <h3 class="text-sm md:text-base font-semibold text-gray-900  ">Code Flow Tech LLP</h3>
               <p class="mb-4 text-sm font-normal text-gray-500 ">July 2018 - September 2019</p>
             </div>
-            <div className="basis-[65%] relative border-s border-gray-200 ml-4 px-8 py-4">
+            <div className="basis-[75%] md:basis-[65%] relative border-s border-gray-200 ml-4 px-6 md:px-8 py-2 md:py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
-              <h3 class="text-base font-semibold text-gray-900 ">Android App Developer</h3>
-              <p class="mb-4 text-sm font-normal text-gray-500 ">Worked on 2+ android app projects basically a Food Delivery, University Helpdesk app etc.</p>
+              <h3 class="text-sm md:text-base font-semibold text-gray-900  ">Android App Developer</h3>
+              <p class="mb-4 text-sm md:text-sm  font-normal text-gray-500 ">Worked on 2+ android app projects basically a Food Delivery, University Helpdesk app etc.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700      ">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -370,15 +388,15 @@ const Home = () => {
 
   const myLatestWork = (index) => {
     return (
-      <motion.div className="absolute top-0 left-0 flex flex-col h-screen"
+      <motion.div className="absolute top-0 left-0 flex flex-col h-screen md:pt-[112px]"
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="bg-[#FBFBFB] w-full h-full mb-28">
-          <div className="px-0 md:pl-[10%] text-4xl font-medium mt-10">My Portfolio</div>
-          <div className="px-0 md:pl-[10%] flex text-lg font-light mt-2 w-[60%]">One step away to develop your product with us</div>
-          <div className={" my-6 whitespace-nowrap flex " + (paused ? '' : 'animate-slide')}
+        <div className="bg-[#FBFBFB] w-full h-full">
+          <div className="md:pl-[10%] text-2xl md:text-4xl font-medium mt-4 md:mt-10 px-4 md:px-0">My Portfolio</div>
+          <div className="md:pl-[10%] flex text-base md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">One step away to develop your product with us</div>
+          <div className={"my-8 md:my-6 whitespace-nowrap flex " + (paused ? '' : 'animate-slide')}
           // onMouseEnter={() => setPaused(true)}
           // onMouseLeave={() => setPaused(false)}
           >
@@ -393,49 +411,9 @@ const Home = () => {
     );
   }
 
-  const letsConnect = (index) => {
-    return (
-      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen items-center justify-between"
-        key={index}
-        initial={{ y: "100%" }}
-        animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="flex flex-col w-[80%] justify-center px-10 py-4 items-center text-center bg-[#312E81] text-white rounded-xl">
-          <div className="text-4xl font-medium mt-10">Let's Make Something Great Together!</div>
-          <div className="flex text-lg font-light mt-4 mb-16 text-center">I will help you to create your brands and innovate businesses</div>
-          <button type="button" class="text-[#312E81] bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center my-4 ">
-            Let's Talk
-            <svg class="w-4 h-4 ms-2" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 7H6.01M10 7H10.01M14 7H14.01M7 13H3C1.89543 13 1 12.1046 1 11V3C1 1.89543 1.89543 1 3 1H17C18.1046 1 19 1.89543 19 3V11C19 12.1046 18.1046 13 17 13H12L7 18V13Z" stroke="#312E81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-        <div className="flex flex-row justify-between mb-32 w-full text-sm">
-          © 2025 Deepanshu. All rights reserved.
-          <div className="flex flex-row space-x-4">
-            <div ><a
-              href="https://www.linkedin.com/in/deepanshudps/" target="_blank">
-              <i class="fab fa-linkedin text-[20px]"></i></a></div>
-            <div class="social-item"><a
-              href="https://www.youtube.com/channel/UCXxLsXabJCalmkG4eeOt-OA" target="_blank">
-              <i class="fab fa-youtube text-[20px]"></i></a></div>
-            <div class="social-item"><a
-              href="https://github.com/deepanshuDPS/"
-              target="_blank"><i class="fab fa-github text-[20px]"></i></a></div>
-            <div class="social-item"><a
-              href="https://play.google.com/store/apps/developer?id=DPS+Productions" target="_blank"><i
-                class="fab fa-google-play text-[20px]"></i></a></div>
-            <div class="social-item"><a href="https://wa.me/918800908158"
-              target="_blank"><i class="fab fa-whatsapp text-[20px]"></i></a></div>
-          </div>
-        </div >
-      </motion.div >
-    );
-  }
-
   const peopleAboutMe = (index) => {
     return (
-      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen  items-center"
+      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen items-center justify-center"
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
@@ -491,10 +469,74 @@ const Home = () => {
       </motion.div>
     );
   }
+
+  const letsConnect = (index) => {
+    return (
+      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen items-center justify-between pt-0 pb-[112px] md:pb-0 md:pt-[112px]"
+        key={index}
+        initial={{ y: "100%" }}
+        animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
+        transition={{ duration: 1, ease: "easeInOut" }}>
+        <div className="flex flex-col w-[90%] md:w-[80%] justify-center px-6 md:px-10 py-2 md:py-4 items-center text-center bg-[#312E81] text-white rounded-xl mt-16 md:mt-0">
+          <div className="text-2xl md:text-4xl font-medium mt-10">Let's Make Something Great Together!</div>
+          <div className="flex text-base md:text-lg font-light mt-4 mb-8 md:mb-16 text-center">I will help you to create your brands and innovate businesses</div>
+          <button type="button" class="text-[#312E81] bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center my-4 ">
+            Let's Talk
+            <svg class="w-4 h-4 ms-2" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 7H6.01M10 7H10.01M14 7H14.01M7 13H3C1.89543 13 1 12.1046 1 11V3C1 1.89543 1.89543 1 3 1H17C18.1046 1 19 1.89543 19 3V11C19 12.1046 18.1046 13 17 13H12L7 18V13Z" stroke="#312E81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        {false && <div className="hidden md:block w-full">
+        <div className="flex flex-row justify-between w-full text-sm ">
+          <div>© 2025 Deepanshu. All rights reserved.</div>
+          <div className="flex flex-row space-x-4">
+            <div ><a
+              href="https://www.linkedin.com/in/deepanshudps/" target="_blank">
+              <i class="fab fa-linkedin text-[20px]"></i></a></div>
+            <div class="social-item"><a
+              href="https://www.youtube.com/channel/UCXxLsXabJCalmkG4eeOt-OA" target="_blank">
+              <i class="fab fa-youtube text-[20px]"></i></a></div>
+            <div class="social-item"><a
+              href="https://github.com/deepanshuDPS/"
+              target="_blank"><i class="fab fa-github text-[20px]"></i></a></div>
+            <div class="social-item"><a
+              href="https://play.google.com/store/apps/developer?id=DPS+Productions" target="_blank"><i
+                class="fab fa-google-play text-[20px]"></i></a></div>
+            <div class="social-item"><a href="https://wa.me/918800908158"
+              target="_blank"><i class="fab fa-whatsapp text-[20px]"></i></a></div>
+          </div>
+        </div >
+        </div>}
+        <div className="flex flex-col md:flex-row-reverse justify-center md:justify-between items-center w-full text-sm px-4 ">
+          <div className="flex flex-row space-x-4 mb-2">
+            <div ><a
+              href="https://www.linkedin.com/in/deepanshudps/" target="_blank">
+              <i class="fab fa-linkedin text-[20px]"></i></a></div>
+            <div class="social-item"><a
+              href="https://www.youtube.com/channel/UCXxLsXabJCalmkG4eeOt-OA" target="_blank">
+              <i class="fab fa-youtube text-[20px]"></i></a></div>
+            <div class="social-item"><a
+              href="https://github.com/deepanshuDPS/"
+              target="_blank"><i class="fab fa-github text-[20px]"></i></a></div>
+            <div class="social-item"><a
+              href="https://play.google.com/store/apps/developer?id=DPS+Productions" target="_blank"><i
+                class="fab fa-google-play text-[20px]"></i></a></div>
+            <div class="social-item"><a href="https://wa.me/918800908158"
+              target="_blank"><i class="fab fa-whatsapp text-[20px]"></i></a></div>
+          </div>
+          
+          <div>© 2025 Deepanshu. All rights reserved.</div>
+        </div >
+      </motion.div >
+    );
+  }
+
+
   return (
-    <div className="flex relative w-full overflow-hidden h-screen mx-auto">
+    <div className="flex relative w-full overflow-hidden h-screen mx-auto md:-mt-[112px]">
       {topIntro(0)}
-      {whatDoIHelp(1)}
+      {whatCanIDo(1)}
       {myWorkExperience(2)}
       {myLatestWork(3)}
       {peopleAboutMe(4)}

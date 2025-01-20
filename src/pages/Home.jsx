@@ -394,14 +394,26 @@ const Home = () => {
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
         <div className="bg-[#FBFBFB] w-full h-full">
-          <div className="md:pl-[10%] text-2xl md:text-4xl font-medium mt-4 md:mt-10 px-4 md:px-0">My Portfolio</div>
-          <div className="md:pl-[10%] flex text-base md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">One step away to develop your product with us</div>
-          <div className={"my-8 md:my-6 whitespace-nowrap flex " + (paused ? '' : 'animate-slide')}
+          <div className="md:pl-[10%] text-2xl md:text-4xl font-medium mt-4 md:mt-10 px-4 md:px-0">Archive</div>
+          <div className="md:pl-[10%] flex text-base md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">Here are some of our past developments</div>
+          <Link
+            to={"/about"}
+            className="md:pl-[10%] flex items-center text-base md:text-base my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%] text-blue-500 hover:underline cursor-pointer">Expore More <svg class="rtl:rotate-180 w-3 h-3 md:w-4 md:h-4 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg></Link>
+          <div className={"my-8 md:my-6 whitespace-nowrap hidden md:flex animate-slide"}
           // onMouseEnter={() => setPaused(true)}
           // onMouseLeave={() => setPaused(false)}
           >
             {myProjects.map((it) => {
               return (<img src={it.img} className="rounded-lg bg-[#D9D9D9] w-[480px] h-[280px] mr-4 cursor-pointer object-center" onClick={() => {
+                window.open(it.link, '_blank')
+              }} />)
+            })}
+          </div>
+          <div className={"my-8 md:my-6 whitespace-nowrap md:hidden grid grid-cols-2 px-2 space-y-1 space-x-2 justify-center items-center"}>
+            {myProjects.map((it) => {
+              return (<img src={it.img} className="rounded-lg bg-[#D9D9D9] w-[160px] aspect-[2] cursor-pointer object-center" onClick={() => {
                 window.open(it.link, '_blank')
               }} />)
             })}
@@ -413,15 +425,15 @@ const Home = () => {
 
   const peopleAboutMe = (index) => {
     return (
-      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen items-center justify-center"
+      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen items-center justify-start md:justify-center"
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="text-4xl font-medium mt-10">People Talk About Me</div>
-        <div className="flex text-lg font-light mt-4 mb-16 w-[50%] text-center">I got a job that was in accordance with that salary and field of work, the process of submitting an application was quite cosy</div>
-        <div className="flex flex-row w-full relative h-[150px]">
-          {currentTestimonialSection != 0 && <button className="absolute left-[22%] z-10 top-[25%] shadow-md rounded-full"
+        <div className="text-2xl md:text-4xl font-medium mt-4 md:mt-10 px-4 md:px-0">People Talk About Me</div>
+        <div className="flex text-base md:text-lg font-light text-center my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I got a job that was in accordance with that salary and field of work, the process of submitting an application was quite cosy</div>
+        <div className="flex flex-row w-full relative h-[300px] md:h-[150px]">
+          {currentTestimonialSection != 0 && <button className="absolute left-[4%] md:left-[22%] z-10 top-[35%] md:top-[25%] shadow-md rounded-full"
             onClick={() => { handleLeftRight("left") }}>
             <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g filter="url(#filter0_d_2_52)">
@@ -430,7 +442,7 @@ const Home = () => {
               </g>
             </svg>
           </button>}
-          {currentTestimonialSection != testimonials.length - 1 && <button className="absolute right-[22%] z-10 top-[25%] shadow-md rounded-full"
+          {currentTestimonialSection != testimonials.length - 1 && <button className="absolute right-[4%] md:right-[22%] z-10 top-[35%] md:top-[25%] shadow-md rounded-full"
             onClick={() => { handleLeftRight("right") }}>
             <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g filter="url(#filter0_d_2_49)">
@@ -440,7 +452,7 @@ const Home = () => {
             </svg>
           </button>}
           {testimonials.map((t, index) => {
-            return (<motion.div className={"h-full w-[50%] left-[25%] absolute top-0 mx-1 -translate-x-1/2 flex flex-col  justify-center " + (currentTestimonialSection == index ? "transition-opacity ease-in duration-300 opacity-100" : [currentTestimonialSection - 1, currentTestimonialSection + 1].includes(index) ? "transition-opacity ease-in duration-700 opacity-10" : "hidden")}
+            return (<motion.div className={"h-full w-[85%] md:w-[50%] left-[7%] md:left-[25%] absolute top-0 mx-1 -translate-x-1/2 flex flex-col  justify-center " + (currentTestimonialSection == index ? "transition-opacity ease-in duration-300 opacity-100" : [currentTestimonialSection - 1, currentTestimonialSection + 1].includes(index) ? "transition-opacity ease-in duration-700 opacity-10" : "hidden")}
               key={index}
               initial={{ x: "100%" }}
               animate={{ x: index === currentTestimonialSection ? "0%" : index < currentTestimonialSection ? "-100%" : "100%" }}
@@ -448,18 +460,17 @@ const Home = () => {
             >
               <div className="flex flex-col bg-[#FBFBFB] rounded-lg px-6 py-4 absolute w-full justify-center items-center">
                 <div className="group relative">
-                  <div className="text-xl font-medium text-center line-clamp-3 cursor-pointer">{`"${t.review}"`}</div>
+                  <div className="text-lg md:text-xl font-medium text-center line-clamp-6 md:line-clamp-3 cursor-pointer">{`"${t.review}"`}</div>
                   {t.hover && <div className="opacity-0 group-hover:opacity-100 duration-300 absolute text-sm font-medium text-center bg-gray-100 p-2 -top-[50%] cursor-pointer rounded-xl">{`"${t.review}"`}</div>}
                 </div>
-                <div className="flex flex-row text-[16px] my-2">
+                <div className="flex text-[16px] justify-center items-center truncate mt-2">
                   <a href={t.link_to_profile} className="font-medium text-black hover:underline cursor-pointer" target="_blank">{t.name}</a>
-                  &nbsp;•&nbsp;
-                  <div className="font-light">{t.helped_in}</div>
                   {t.year && <>
                     &nbsp;•&nbsp;
                     <div className="font-light">{t.year}</div>
                   </>}
                 </div>
+                <div className="font-light">{t.helped_in}</div>
               </div>
             </motion.div>)
           })}
@@ -480,34 +491,13 @@ const Home = () => {
         <div className="flex flex-col w-[90%] md:w-[80%] justify-center px-6 md:px-10 py-2 md:py-4 items-center text-center bg-[#312E81] text-white rounded-xl mt-16 md:mt-0">
           <div className="text-2xl md:text-4xl font-medium mt-10">Let's Make Something Great Together!</div>
           <div className="flex text-base md:text-lg font-light mt-4 mb-8 md:mb-16 text-center">I will help you to create your brands and innovate businesses</div>
-          <button type="button" class="text-[#312E81] bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center my-4 ">
+          <Link to="/contact-us" class="text-[#312E81] bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center my-4 ">
             Let's Talk
             <svg class="w-4 h-4 ms-2" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 7H6.01M10 7H10.01M14 7H14.01M7 13H3C1.89543 13 1 12.1046 1 11V3C1 1.89543 1.89543 1 3 1H17C18.1046 1 19 1.89543 19 3V11C19 12.1046 18.1046 13 17 13H12L7 18V13Z" stroke="#312E81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-          </button>
+          </Link>
         </div>
-        {false && <div className="hidden md:block w-full">
-        <div className="flex flex-row justify-between w-full text-sm ">
-          <div>© 2025 Deepanshu. All rights reserved.</div>
-          <div className="flex flex-row space-x-4">
-            <div ><a
-              href="https://www.linkedin.com/in/deepanshudps/" target="_blank">
-              <i class="fab fa-linkedin text-[20px]"></i></a></div>
-            <div class="social-item"><a
-              href="https://www.youtube.com/channel/UCXxLsXabJCalmkG4eeOt-OA" target="_blank">
-              <i class="fab fa-youtube text-[20px]"></i></a></div>
-            <div class="social-item"><a
-              href="https://github.com/deepanshuDPS/"
-              target="_blank"><i class="fab fa-github text-[20px]"></i></a></div>
-            <div class="social-item"><a
-              href="https://play.google.com/store/apps/developer?id=DPS+Productions" target="_blank"><i
-                class="fab fa-google-play text-[20px]"></i></a></div>
-            <div class="social-item"><a href="https://wa.me/918800908158"
-              target="_blank"><i class="fab fa-whatsapp text-[20px]"></i></a></div>
-          </div>
-        </div >
-        </div>}
         <div className="flex flex-col md:flex-row-reverse justify-center md:justify-between items-center w-full text-sm px-4 ">
           <div className="flex flex-row space-x-4 mb-2">
             <div ><a
@@ -525,7 +515,7 @@ const Home = () => {
             <div class="social-item"><a href="https://wa.me/918800908158"
               target="_blank"><i class="fab fa-whatsapp text-[20px]"></i></a></div>
           </div>
-          
+
           <div>© 2025 Deepanshu. All rights reserved.</div>
         </div >
       </motion.div >

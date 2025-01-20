@@ -37,19 +37,19 @@ const ContactUs = () => {
       initial={{ x: "-100%" }}
       animate={{ x: "0%" }}
       transition={{ duration: 0.75, ease: "easeInOut" }}>
-      <div className="flex flex-col md:flex-row bg-[#FBFBFB] justify-center items-center py-28 px-[12%]">
-        <div className="font-medium text-[50px] md:basis-1/2 w-full flex justify-start px-10" style={{ lineHeight: "62px" }}>Get In Touch<br />With Me</div>
-        <div className="text-base md:basis-1/2 w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar quam nisi nisl gravida leo nisi augue. Vivamus nunc interdum interdum pulvinar massa nullam odio at. Sem cursus tincidunt velit porttitor.</div>
+      <div className="flex flex-col md:flex-row bg-[#FBFBFB] justify-center items-center py-14 md:py-28 px-[6%] md:px-[12%]">
+        <div className="font-medium text-3xl md:text-[50px] md:basis-1/2 w-full flex justify-start px-4 md:px-10 leading-[48px] md:leading-[62px]" >Get In Touch<br />With Me</div>
+        <div className="text-base md:basis-1/2 w-full px-4 md:px-10 mt-4 md:mt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar quam nisi nisl gravida leo nisi augue. Vivamus nunc interdum interdum pulvinar massa nullam odio at. Sem cursus tincidunt velit porttitor.</div>
       </div>
-      <div class="flex flex-col py-14 px-[12%]">
+      <div class="flex flex-col py-7 md:py-14 px-[12%]">
         <div className="flex flex-col md:flex-row justify-center items-start">
           <h2 class="basis-1/2 mb-4 text-3xl text-start font-medium text-gray-900 -mt-1">Contact me to if you have<br />project in mind</h2>
 
           <div className="basis-1/2 flex flex-col">
             <p class="text-base mb-4 font-light text-start text-gray-500">Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</p>
-            <div className="flex flex-row w-full justify-around">
+            <div className="flex flex-col md:flex-row w-full justify-start md:justify-around">
               <a className="text-base text-[#00998C]" href="https://wa.me/918800757476" target="_blank"><i class="fab fa-whatsapp me-2"></i>+91-8800757476</a>
-              <a className="flex flex-row text-base items-center space-x-2 text-[#00998C]" href="mailto:ideepanshu9@gmail.com" target="_blank">
+              <a className="flex flex-row text-base w-fit md:w-auto items-center md:space-x-2 text-[#00998C]" href="mailto:ideepanshu9@gmail.com" target="_blank">
                 <svg width="auto" height="12px" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M2 0H20C21.1046 0 22 0.89543 22 2V16C22 17.1046 21.1046 18 20 18H2C0.89543 18 0 17.1046 0 16V2C0 0.89543 0.89543 0 2 0ZM2 6.61811V16H20V6.61853L11 11.1185L2 6.61811ZM2 4.38199L11 8.88245L20 4.38247V2H2V4.38199Z" fill="#00998C" />
                 </svg>
@@ -58,7 +58,7 @@ const ContactUs = () => {
           </div>
         </div>
         <form onSubmit={processing ? null : onSubmit} class="space-y-8 mt-20">
-          <div className="flex flex-row space-x-2">
+          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-2">
             <div className="basis-1/2">
               <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
               <input type="text" id="name" name="name" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="What's your name?" required />
@@ -68,7 +68,7 @@ const ContactUs = () => {
               <input type="email" id="email" name="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 " placeholder="name@email.com" required />
             </div>
           </div>
-          <div class="sm:col-span-2">
+          <div class="sm:col-span-2 -mt-2 md:-mt-0">
             <label for="message" class="block mb-2 text-sm font-medium text-gray-900 ">Your message</label>
             <textarea id="message" rows="6" name="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a message..." required></textarea>
           </div>

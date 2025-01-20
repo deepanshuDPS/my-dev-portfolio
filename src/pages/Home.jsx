@@ -139,6 +139,7 @@ const Home = () => {
 
   useEffect(() => {
     window.addEventListener("wheel", handleScroll, { passive: false });
+    window.addEventListener("touchmove", handleScroll, { passive: false });
     // Add event listener for keyboard input (up/down arrow)
     window.addEventListener("keydown", handleKeyDown);
     // Cleanup on component unmount
@@ -388,7 +389,7 @@ const Home = () => {
 
   const myLatestWork = (index) => {
     return (
-      <motion.div className="absolute top-0 left-0 flex flex-col h-screen md:pt-[112px]"
+      <motion.div className="absolute top-0 left-0 flex flex-col h-screen w-full md:pt-[112px]"
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
@@ -411,11 +412,15 @@ const Home = () => {
               }} />)
             })}
           </div>
-          <div className={"my-8 md:my-6 whitespace-nowrap md:hidden grid grid-cols-2 px-2 space-y-1 space-x-2 justify-center items-center"}>
+          <div className={"my-8 md:my-6 whitespace-nowrap md:hidden grid grid-cols-2 px-2 justify-center items-center"}>
             {myProjects.map((it) => {
-              return (<img src={it.img} className="rounded-lg bg-[#D9D9D9] w-[160px] aspect-[2] cursor-pointer object-center" onClick={() => {
-                window.open(it.link, '_blank')
-              }} />)
+              return (
+                <div className="flex flex-row w-full">
+                  <img src={it.img} className="rounded-lg bg-[#D9D9D9] w-fit mt-1 h-[80px] aspect-[2] cursor-pointer object-center" onClick={() => {
+                    window.open(it.link, '_blank')
+                  }} />
+                </div>
+              )
             })}
           </div>
         </div>

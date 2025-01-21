@@ -38,15 +38,15 @@ const ContactUs = () => {
       animate={{ x: "0%" }}
       transition={{ duration: 0.75, ease: "easeInOut" }}>
       <div className="flex flex-col md:flex-row bg-[#FBFBFB] justify-center items-center py-14 md:py-28 px-[6%] md:px-[12%]">
-        <div className="font-medium text-3xl md:text-[50px] md:basis-1/2 w-full flex justify-start px-4 md:px-10 leading-[48px] md:leading-[62px]" >Get In Touch<br />With Me</div>
-        <div className="text-base md:basis-1/2 w-full px-4 md:px-10 mt-4 md:mt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar quam nisi nisl gravida leo nisi augue. Vivamus nunc interdum interdum pulvinar massa nullam odio at. Sem cursus tincidunt velit porttitor.</div>
+        <div className="font-medium text-3xl md:text-[50px] md:basis-1/2 w-full flex justify-start px-4 md:px-10 leading-[48px] md:leading-[62px]" >Get In Touch<br />With Us</div>
+        <div className="text-base md:basis-1/2 w-full px-4 md:px-10 mt-4 md:mt-0">Before starting any project, mentorship, or development, we always need a discussion that provides clarity in the thought process from both sides. These discussions encourage us to understand the process and what we are going to do.</div>
       </div>
       <div class="flex flex-col py-7 md:py-14 px-[12%]">
         <div className="flex flex-col md:flex-row justify-center items-start">
-          <h2 class="basis-1/2 mb-4 text-3xl text-start font-medium text-gray-900 -mt-1">Contact me to if you have<br />project in mind</h2>
+          <h2 class="basis-1/2 mb-4 text-3xl text-start font-medium text-gray-900 -mt-1">Contact me to if you need<br />any help from us</h2>
 
           <div className="basis-1/2 flex flex-col">
-            <p class="text-base mb-4 font-light text-start text-gray-500">Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</p>
+            <p class="text-base mb-4 font-light text-start text-gray-500">Got a technical issue? Want to lean something from us? Need details about how we can help you? Let us know.</p>
             <div className="flex flex-col md:flex-row w-full justify-start md:justify-around">
               <a className="text-base text-[#00998C]" href="https://wa.me/918800757476" target="_blank"><i class="fab fa-whatsapp me-2"></i>+91-8800757476</a>
               <a className="flex flex-row text-base w-fit md:w-auto items-center md:space-x-2 text-[#00998C]" href="mailto:ideepanshu9@gmail.com" target="_blank">

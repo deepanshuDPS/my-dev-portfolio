@@ -19,7 +19,9 @@ const About = () => {
         <div className="text-base md:basis-1/2 w-full px-6 md:ps-28 text-gray-500">
           <div className="text-3xl md:text-[70px] font-medium my-2 md:my-4 text-black" style={{ lineHeight: "80px" }}>Deepanshu</div>
           <div className="text-base md:text-lg font-medium my-2 md:my-4 text-[#00998C]">Frontend engineer & App developer</div>
-          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar quam nisi nisl gravida leo nisi augue. Vivamus nunc interdum interdum pulvinar massa nullam odio at. Sem cursus tincidunt velit porttitor.</div>
+          <div>I am passionate about tech‑related tasks and have been refining my skills over the past 8+ years (6+ years of
+            corporate experience). My expertise lies mainly in Frontend Engineering, including Android app development,
+            Flutter apps, and web development.</div>
           <Link to="contact-us" class="flex-row items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex me-2 my-12 md:my-28">
             Get in touch
             <svg className="ml-2" width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,8 +33,7 @@ const About = () => {
       <div class="flex flex-col py-12 md:py-28 px-[12%]">
         <div className="text-2xl md:text-4xl font-medium">More About Me</div>
         <div className="my-4 md:my-8 text-gray-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum eget libero elementum amet ultricies ut hac ultrices ullamcorper.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum eget libero elementum amet ultricies ut hac ultrices ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum eget libero elementum amet ultricies ut hac ultrices ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum eget libero elementum amet ultricies ut hac ultrices ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum eget libero elementum amet ultricies ut hac ultrices ullamcorper.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum eget libero elementum amet ultricies ut hac ultrices ullamcorper.
-        </div>
+        From the 2nd year of my college, I started Android development and continuously worked on 3-4 of my personal apps for the remaining 2 years. I love building coding logic, and I was always interested in creating creative things through it. Since then, I've been refining my skills in both coding and creativity. I have my own personal projects, where I've sometimes succeeded but struggled to grow them, or failed in some cases. I always enjoy helping students think and learn frontend engineering and development in a way that makes users feel good and enjoy the services they've created. Over the past 2 years, I also started writing and have developed a passion for content related to human psychology, which empowers my way of thinking and ethics.        </div>
         <div className="flex flex-row mt-8 space-x-6 md:space-x-12">
           <div className="flex flex-col">
             <div className="text-[30px] font-medium text-blue-700">5+</div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -95,9 +95,10 @@ const Home = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [currentTestimonialSection, setCurrentTestimonialSection] = useState(0);
   const [isTestimonialsScrolling, setTestimonialsScrolling] = useState(false);
+  const touchStartY = useRef(0);
 
   const [isScrolling, setIsScrolling] = useState(false);
-  const [paused, setPaused] = useState(false);
+  // const [paused, setPaused] = useState(false);
 
   // Handle keyboard events (up/down arrows)
   const handleKeyDown = (e) => {
@@ -128,24 +129,66 @@ const Home = () => {
     // Prevent the default scroll behavior
     e.preventDefault();
     if (isScrolling) return; // Prevent multiple scroll triggers
+
+
+    const delta =
+      e.wheelDelta ? -e.wheelDelta : e.detail * 20; // Handle scroll direction
+
     setIsScrolling(true);
     setTimeout(() => setIsScrolling(false), 800); // Allow scrolling after animation
-    if (e.deltaY > 0 && currentSection < 5) {
+    if (delta > 50 && currentSection < 5) {
       setCurrentSection(currentSection + 1);
-    } else if (e.deltaY < 0 && currentSection > 0) {
+    } else if (delta < -50 && currentSection > 0) {
       setCurrentSection(currentSection - 1);
     }
   };
 
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault();
+    if (isScrolling) return; // Prevent multiple scroll triggers
+
+
+    const touchEndY = e.touches[0].clientY;
+    const delta = touchStartY.current - touchEndY;
+    console.log(delta)
+    setIsScrolling(true);
+    setTimeout(() => setIsScrolling(false), 800); // Allow scrolling after animation
+    if (delta > 5 && currentSection < 5) {
+      setCurrentSection(currentSection + 1);
+    } else if (delta < -5 && currentSection > 0) {
+      setCurrentSection(currentSection - 1);
+    }
+  };
+
+
+
+
   useEffect(() => {
-    window.addEventListener("wheel", handleScroll, { passive: false });
-    window.addEventListener("touchmove", handleScroll, { passive: false });
+
+    const container = document.getElementById("home-containter"); // Attach listeners to a specific container
+
+
+    container.addEventListener("mousewheel", handleScroll, { passive: false });
+    container.addEventListener("DOMMouseScroll", handleScroll, { passive: false }); // For older Firefox versions
     // Add event listener for keyboard input (up/down arrow)
-    window.addEventListener("keydown", handleKeyDown);
+    container.addEventListener("keydown", handleKeyDown);
+    container.addEventListener("touchstart", handleTouchStart, { passive: false });
+    container.addEventListener("touchmove", handleTouchMove, { passive: false });
+
     // Cleanup on component unmount
     return () => {
-      window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("keydown", handleKeyDown);
+
+      if (container) {
+        container.removeEventListener("wheel", handleScroll);
+        container.removeEventListener("DOMMouseScroll", handleScroll, { passive: false });
+        container.removeEventListener("keydown", handleKeyDown);
+        container.removeEventListener("touchstart", handleTouchStart, { passive: false });
+        container.removeEventListener("touchmove", handleTouchMove, { passive: false });
+      }
     };
   }, [currentSection, isScrolling]);
 
@@ -174,7 +217,7 @@ const Home = () => {
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
 
-        <div className="flex flex-col justify-start md:basis-3/5 px-4 my-8 md:my-0">
+        <div className="flex flex-col justify-start md:basis-3/5 px-4 my-2 md:my-0">
           <div className="text-2xl md:text-5xl font-extrabold">Dream it, Design it, Develop it</div>
           <div className="text-sm md:text-lg my-6 text-gray-600">Hi, I'm here to help develop your dreams into reality through websites and mobile apps. If you believe in your dream, we believe in our development. It's not just about what we see; it's about what we dream and develop, so others can experience it.</div>
 
@@ -282,9 +325,9 @@ const Home = () => {
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="text-2xl md:text-4xl font-medium px-4 md:px-0">What do I help?</div>
-        <div className="flex text-base md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I will help you with frontend development as mentioned, and I understand that a visually appealing design with minimal friction creates a better service.</div>
-        <div className="flex flex-col md:grid md:grid-cols-2 mt-2 md:mt-12 mx-2">
+        <div className="text-xl md:text-4xl font-medium px-4 md:px-0">What do I help?</div>
+        <div className="flex text-sm md:text-lg font-light my-1 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I can help you in the fields mentioned below.</div>
+        <div className="flex flex-col md:grid md:grid-cols-2 mt-2 md:mt-6 mx-2">
           {whatIDoDetails.map((item) => {
             return (
               <div className="flex flex-row justify-center m-2 items-start space-x-3 md:space-x-4 p-3 md:p-6 border-2 border-gray-400 rounded-2xl">
@@ -302,26 +345,26 @@ const Home = () => {
   }
   const myWorkExperience = (index) => {
     return (
-      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen justify-start md:justify-center md:mt-4"
+      <motion.div className="px-0 md:px-[10%] w-full absolute top-0 left-0 flex flex-col h-screen justify-start md:justify-center mt-2 placeholder:md:mt-4"
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="text-2xl md:text-4xl font-medium px-4 md:px-0">My work Experience</div>
-        <div className="flex text-base md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I have worked on 10+ projects, including startups and personal ones. Here are my experiences.</div>
+        <div className="text-xl md:text-4xl font-medium px-4 md:px-0">My work Experience</div>
+        <div className="flex text-sm md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I have worked on 10+ projects, including startups and personal ones. Here are my experiences.</div>
 
         <ol class="relative w-full">
           <li class="flex flex-row ms-4">
             <div className="basis-[25%] md:basis-[35%] pt-2 md:pt-4">
               <h3 class="text-sm md:text-base font-semibold text-gray-900 ">Personal Projects</h3>
-              <p class="mb-4 text-xs md:text-sm font-normal text-gray-500 ">July 2016 - Present</p>
+              <p class="mb-2 md:mb-4 text-xs md:text-sm font-normal text-gray-500 ">July 2016 - Present</p>
             </div>
             <div className="basis-[75%] md:basis-[65%] relative border-s border-gray-200 ml-4 px-6 md:px-8 py-2 md:py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
               <h3 class="text-sm md:text-base  font-semibold text-gray-900 ">Frontend Engineer</h3>
-              <p class="mb-4 text-sm md:text-sm  font-normal text-gray-500 ">Worked on 5+ android apps includes games, utility apps, website develpment and more.</p>
+              <p class="mb-2 md:mb-4 text-xs md:text-sm  font-normal text-gray-500 ">Worked on 5+ android apps includes games, utility apps, website develpment and more.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -331,14 +374,14 @@ const Home = () => {
           <li class="flex flex-row ms-4">
             <div className="basis-[25%] md:basis-[35%] pt-2 md:pt-4">
               <h3 class="text-sm md:text-base font-semibold text-gray-900 ">Hubhopper</h3>
-              <p class="mb-4 text-sm font-normal text-gray-500 ">January 2021 - Present</p>
+              <p class="mb-2 md:mb-4 text-xs font-normal text-gray-500 ">January 2021 - Present</p>
             </div>
             <div className="basis-[75%] md:basis-[65%] relative border-s border-gray-200 ml-4 px-6 md:px-8 py-2 md:py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
               <h3 class="text-sm md:text-base font-semibold text-gray-900  ">Frontend Engineer</h3>
-              <p class="mb-4 text-sm md:text-sm  font-normal text-gray-500 ">Working on podcast creation and listening android app and it's website develoment.</p>
+              <p class="mb-2 md:mb-4 text-xs md:text-sm  font-normal text-gray-500 ">Working on podcast creation and listening android app and it's website develoment.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -348,14 +391,14 @@ const Home = () => {
           <li class="flex flex-row ms-4">
             <div className="basis-[25%] md:basis-[35%] pt-2 md:pt-4">
               <h3 class="text-sm md:text-base font-semibold text-gray-900  ">NearGroup Chatbot</h3>
-              <p class="mb-4 text-sm font-normal text-gray-500 ">January 2020 - December 2020</p>
+              <p class="mb-2 md:mb-4 text-xs font-normal text-gray-500 ">January 2020 - December 2020</p>
             </div>
             <div className="basis-[75%] md:basis-[65%] relative border-s border-gray-200 ml-4 px-6 md:px-8 py-2 md:py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
               <h3 class="text-sm md:text-base font-semibold text-gray-900  ">Android App Developer</h3>
-              <p class="mb-4 text-sm md:text-sm  font-normal text-gray-500 ">Worked on 2 android app projects, one is dating app and the other is a quiz game app.</p>
+              <p class="mb-2 md:mb-4 text-xs md:text-sm  font-normal text-gray-500 ">Worked on 2 android app projects, one is dating app and the other is a quiz game app.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700      ">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -365,14 +408,14 @@ const Home = () => {
           <li class="flex flex-row ms-4">
             <div className="basis-[25%] md:basis-[35%] pt-2 md:pt-4">
               <h3 class="text-sm md:text-base font-semibold text-gray-900  ">Code Flow Tech LLP</h3>
-              <p class="mb-4 text-sm font-normal text-gray-500 ">July 2018 - September 2019</p>
+              <p class="mb-2 md:mb-4 text-xs font-normal text-gray-500 ">July 2018 - September 2019</p>
             </div>
             <div className="basis-[75%] md:basis-[65%] relative border-s border-gray-200 ml-4 px-6 md:px-8 py-2 md:py-4">
               <div class="absolute w-6 h-6 bg-white border-gray-200 border-dotted border-2 rounded-full mt-0.75 -start-3  "></div>
               <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white "></div>
               {/* <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">February 2022</time> */}
               <h3 class="text-sm md:text-base font-semibold text-gray-900  ">Android App Developer</h3>
-              <p class="mb-4 text-sm md:text-sm  font-normal text-gray-500 ">Worked on 2+ android app projects basically a Food Delivery, University Helpdesk app etc.</p>
+              <p class="mb-2 md:mb-4 text-xs md:text-sm  font-normal text-gray-500 ">Worked on 2+ android app projects basically a Food Delivery, University Helpdesk app etc.</p>
 
             </div>
             {/* <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700      ">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -436,7 +479,7 @@ const Home = () => {
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
         <div className="text-2xl md:text-4xl font-medium mt-4 md:mt-10 px-4 md:px-0">People Talk About Me</div>
-        <div className="flex text-base md:text-lg font-light text-center my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I got a job that was in accordance with that salary and field of work, the process of submitting an application was quite cosy</div>
+        <div className="flex text-base md:text-lg font-light text-center my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I thank the people who gave me a chance to showcase my skills and enhance their work and services</div>
         <div className="flex flex-row w-full relative h-[300px] md:h-[150px]">
           {currentTestimonialSection != 0 && <button className="absolute left-[4%] md:left-[22%] z-10 top-[35%] md:top-[25%] shadow-md rounded-full"
             onClick={() => { handleLeftRight("left") }}>
@@ -493,9 +536,9 @@ const Home = () => {
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
         transition={{ duration: 1, ease: "easeInOut" }}>
-        <div className="flex flex-col w-[90%] md:w-[80%] justify-center px-6 md:px-10 py-2 md:py-4 items-center text-center bg-[#312E81] text-white rounded-xl mt-16 md:mt-0">
+        <div className="flex flex-col w-[90%] md:w-[80%] justify-center px-6 md:px-10 py-2 md:py-4 items-center text-center bg-[#312E81] text-white rounded-xl mt-8 md:mt-0">
           <div className="text-2xl md:text-4xl font-medium mt-10">Let's Make Something Great Together!</div>
-          <div className="flex text-base md:text-lg font-light mt-4 mb-8 md:mb-16 text-center">I will help you to create your brands and innovate businesses</div>
+          <div className="flex text-base md:text-lg font-light mt-4 mb-8 md:mb-16 text-center">I will help bring your ideas to life through my code</div>
           <Link to="/contact-us" class="text-[#312E81] bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-4 text-center inline-flex items-center my-4 ">
             Let's Talk
             <svg class="w-4 h-4 ms-2" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -503,7 +546,7 @@ const Home = () => {
             </svg>
           </Link>
         </div>
-        <div className="flex flex-col md:flex-row-reverse justify-center md:justify-between items-center w-full text-sm px-4 ">
+        <div className="flex flex-col md:flex-row-reverse justify-center md:justify-between items-center w-full text-sm px-4 mb-8 md:mb-0">
           <div className="flex flex-row space-x-4 mb-2">
             <div ><a
               href="https://www.linkedin.com/in/deepanshudps/" target="_blank">
@@ -521,7 +564,7 @@ const Home = () => {
               target="_blank"><i class="fab fa-whatsapp text-[20px]"></i></a></div>
           </div>
 
-          <div>© 2025 Deepanshu. All rights reserved.</div>
+          <div>© 2025. Developed by Deepanshu</div>
         </div >
       </motion.div >
     );
@@ -529,7 +572,7 @@ const Home = () => {
 
 
   return (
-    <div className="flex relative w-full overflow-hidden h-screen mx-auto md:-mt-[112px]">
+    <div id="home-containter" className="flex relative w-full overflow-hidden h-screen mx-auto md:-mt-[112px]" style={{ touchAction: "none" }}>
       {topIntro(0)}
       {whatCanIDo(1)}
       {myWorkExperience(2)}

@@ -104,11 +104,12 @@ const Home = () => {
   const handleKeyDown = (e) => {
     e.preventDefault()
     if (isScrolling) return; // Prevent multiple triggers
+    let key = e.key.toLowerCase();
     setIsScrolling(true);
     setTimeout(() => setIsScrolling(false), 800); // Allow scrolling after animation
-    if (e.key === "ArrowDown" && currentSection < 5) {
+    if ((key === "arrowdown" || key === "pageup") && currentSection < 5) {
       setCurrentSection(currentSection + 1);
-    } else if (e.key === "ArrowUp" && currentSection > 0) {
+    } else if ((key === "arrowup" || key === "pagedown") && currentSection > 0) {
       setCurrentSection(currentSection - 1);
     }
   };
@@ -133,12 +134,12 @@ const Home = () => {
 
     const delta =
       e.wheelDelta ? -e.wheelDelta : e.detail * 20; // Handle scroll direction
-
+    console.log(delta)
     setIsScrolling(true);
     setTimeout(() => setIsScrolling(false), 800); // Allow scrolling after animation
-    if (delta > 50 && currentSection < 5) {
+    if (delta > 5 && currentSection < 5) {
       setCurrentSection(currentSection + 1);
-    } else if (delta < -50 && currentSection > 0) {
+    } else if (delta < -5 && currentSection > 0) {
       setCurrentSection(currentSection - 1);
     }
   };
@@ -171,21 +172,21 @@ const Home = () => {
 
     const container = document.getElementById("home-containter"); // Attach listeners to a specific container
 
-
-    container.addEventListener("mousewheel", handleScroll, { passive: false });
-    container.addEventListener("DOMMouseScroll", handleScroll, { passive: false }); // For older Firefox versions
-    // Add event listener for keyboard input (up/down arrow)
-    container.addEventListener("keydown", handleKeyDown);
-    container.addEventListener("touchstart", handleTouchStart, { passive: false });
-    container.addEventListener("touchmove", handleTouchMove, { passive: false });
-
+    if(container){
+      // Add event listener for keyboard input (up/down arrow)
+      window.addEventListener("keydown", handleKeyDown);
+      container.addEventListener("wheel", handleScroll, { passive: false });
+      // container.addEventListener("DOMMouseScroll", handleScroll, { passive: false }); // For older Firefox versions
+      container.addEventListener("touchstart", handleTouchStart, { passive: false });
+      container.addEventListener("touchmove", handleTouchMove, { passive: false });
+    }
+    
     // Cleanup on component unmount
     return () => {
-
       if (container) {
+        window.removeEventListener("keydown", handleKeyDown);
         container.removeEventListener("wheel", handleScroll);
-        container.removeEventListener("DOMMouseScroll", handleScroll, { passive: false });
-        container.removeEventListener("keydown", handleKeyDown);
+        // container.removeEventListener("DOMMouseScroll", handleScroll, { passive: false });
         container.removeEventListener("touchstart", handleTouchStart, { passive: false });
         container.removeEventListener("touchmove", handleTouchMove, { passive: false });
       }
@@ -215,7 +216,7 @@ const Home = () => {
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}>
+        transition={{ duration: 0.8, ease: "easeInOut" }}>
 
         <div className="flex flex-col justify-start md:basis-3/5 px-4 my-2 md:my-0">
           <div className="text-2xl md:text-5xl font-extrabold">Dream it, Design it, Develop it</div>
@@ -324,7 +325,7 @@ const Home = () => {
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}>
+        transition={{ duration: 0.8, ease: "easeInOut" }}>
         <div className="text-xl md:text-4xl font-medium px-4 md:px-0">What do I help?</div>
         <div className="flex text-sm md:text-lg font-light my-1 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I can help you in the fields mentioned below.</div>
         <div className="flex flex-col md:grid md:grid-cols-2 mt-2 md:mt-6 mx-2">
@@ -349,7 +350,7 @@ const Home = () => {
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}>
+        transition={{ duration: 0.8, ease: "easeInOut" }}>
         <div className="text-xl md:text-4xl font-medium px-4 md:px-0">My work Experience</div>
         <div className="flex text-sm md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I have worked on 10+ projects, including startups and personal ones. Here are my experiences.</div>
 
@@ -436,7 +437,7 @@ const Home = () => {
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}>
+        transition={{ duration: 0.8, ease: "easeInOut" }}>
         <div className="bg-[#FBFBFB] w-full h-full">
           <div className="md:pl-[10%] text-2xl md:text-4xl font-medium mt-4 md:mt-10 px-4 md:px-0">Archive</div>
           <div className="md:pl-[10%] flex text-base md:text-lg font-light my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">Here are some of our past developments</div>
@@ -477,7 +478,7 @@ const Home = () => {
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}>
+        transition={{ duration: 0.8, ease: "easeInOut" }}>
         <div className="text-2xl md:text-4xl font-medium mt-4 md:mt-10 px-4 md:px-0">People Talk About Me</div>
         <div className="flex text-base md:text-lg font-light text-center my-2 md:my-4 px-4 md:px-0 w-full md:w-[60%]">I thank the people who gave me a chance to showcase my skills and enhance their work and services</div>
         <div className="flex flex-row w-full relative h-[300px] md:h-[150px]">
@@ -504,7 +505,7 @@ const Home = () => {
               key={index}
               initial={{ x: "100%" }}
               animate={{ x: index === currentTestimonialSection ? "0%" : index < currentTestimonialSection ? "-100%" : "100%" }}
-              transition={{ duration: 1, ease: "easeInOut" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
             >
               <div className="flex flex-col bg-[#FBFBFB] rounded-lg px-6 py-4 absolute w-full justify-center items-center">
                 <div className="group relative">
@@ -535,7 +536,7 @@ const Home = () => {
         key={index}
         initial={{ y: "100%" }}
         animate={{ y: index === currentSection ? "0%" : index < currentSection ? "-100%" : "100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}>
+        transition={{ duration: 0.8, ease: "easeInOut" }}>
         <div className="flex flex-col w-[90%] md:w-[80%] justify-center px-6 md:px-10 py-2 md:py-4 items-center text-center bg-[#312E81] text-white rounded-xl mt-8 md:mt-0">
           <div className="text-2xl md:text-4xl font-medium mt-10">Let's Make Something Great Together!</div>
           <div className="flex text-base md:text-lg font-light mt-4 mb-8 md:mb-16 text-center">I will help bring your ideas to life through my code</div>

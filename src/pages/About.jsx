@@ -4,8 +4,6 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const About = () => {
 
-
-
   return <div className="flex relative w-full overflow-hidden mx-auto">
     <motion.div className="flex flex-col w-full"
       key={0}
